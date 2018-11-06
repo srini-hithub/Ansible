@@ -1,0 +1,19 @@
+---
+- name: To write first play to install the group of tasks.
+  hosts: all
+  remote_user: ansiuser
+  become: true
+  tasks: 
+  - name: To install the httpd package.
+    yum: name=httpd state=latest
+  - name: To Restart the service.
+    service: name=httpd state=restarted enabled=true
+  - name: To configure the web server home page.
+    file: path=/var/www/html/index.html state=touch content="this is myfirst web server"
+  - name: To copy the content to the destination. 
+    copy: content="This is my first web server\n" dest=/var/www/html/index2.html force=yes
+  - name: To insert a line into file.
+    lineinfile: line="This is second line" path=/var/www/html/index.html 
+  - name: To replace a string in the file.
+    replace: replace=first regexp="second" path=/var/www/html/index.html
+

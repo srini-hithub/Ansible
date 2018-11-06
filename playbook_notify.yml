@@ -1,0 +1,12 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  sudo: yes
+  tasks:
+  - name: To restart httpd.
+    yum: name=httpd state=latest
+  - file: path=/var/www/html/index.html state=file
+    notify: restart the service
+  handlers: 
+  - name: restart the service
+    service: name=httpd state=restarted 

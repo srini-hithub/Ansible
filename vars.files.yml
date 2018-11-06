@@ -1,0 +1,10 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  vars_files:
+  - file.yml
+  tasks: 
+  - name: To create files.
+    file: path=/var/tmpi/{{ item }}  state=touch
+    with_items: "{{ file.yml }}" 
