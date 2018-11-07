@@ -1,0 +1,23 @@
+---
+- hosts: 172.31.22.217 
+  remote_user: ansiuser
+  #sudo: yes
+  become: true
+  vars: 
+   users:
+     - myuser1 
+     - myuser2 
+     - myuser3 
+  tasks:
+  - name: To install the mariadb and httpd
+    user: name={{ users[0] }} state=present
+    #with_items: "{{ users }}"
+    #when: ( 'myuser1' in users ) 
+    #register: value
+    #notify: restart the service
+    tags: DB
+  - debug: var=value
+  #handlers: 
+  #- name: restart the service
+    #service: name=mariadb-server state=restarted enabled=true 
+    #service: name=httpd state=restarted enabled=true

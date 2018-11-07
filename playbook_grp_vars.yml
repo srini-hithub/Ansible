@@ -1,0 +1,16 @@
+---
+- hosts: WEB 
+  remote_user: ansiuser
+  #sudo: yes
+  become: true
+  tasks:
+  - name: To install the mariadb and httpd
+    user: name={{ item }} state=present
+    with_items: "{{ users }}"
+- hosts: DB
+  remote_user: ansiuser
+  become: true
+  tasks:
+  - name: To Create users in the DB group.
+    user: name={{ item }} state=present
+    with_items: "{{ users }}"

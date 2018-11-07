@@ -1,0 +1,21 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  sudo: yes
+  tasks:
+  - name: To install the mariadb 
+    yum: name=mariadb state=latest
+    notify: restart the service
+    tags: DB
+  - name: To install the Apache
+    yum: name=httpd state=latest
+    notify: httpd
+    tags: apache
+  - name: To install the elinks.
+    yum: name=elinks state=latest
+    tags: elinks
+  handlers: 
+  - name: restart the service
+    service: name=mariadb-server state=restarted enabled=true 
+  - name: httpd
+    service: name=httpd state=restarted enabled=true

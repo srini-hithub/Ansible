@@ -4,10 +4,10 @@
   remote_user: ansiuser
   become: true
   vars:
-   users:
-   - auser1
-   - auser2
-   - auser3
+   users: 
+    - auser54
+    - auser22
+    - auser33
   tasks: 
   - name: To create users on the clients.
     user: name={{ item }} state=present 

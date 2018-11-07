@@ -1,0 +1,23 @@
+---
+- hosts: 172.31.22.217 
+  remote_user: ansiuser
+  #sudo: yes
+  become: true
+  vars: 
+   packages:
+     - httpd
+     - mariadb
+     - elinks
+  tasks:
+  - name: To install the mariadb and httpd
+    yum: name={{ item }} state=latest
+    with_items: "{{ packages }}"
+    when: "{{ 'mariadb' in packages }}" 
+    #register: value
+    #notify: restart the service
+    tags: DB
+  - debug: var=value
+  #handlers: 
+  - name: restart the service
+    #service: name=mariadb-server state=restarted enabled=true 
+    service: name=httpd state=restarted enabled=true

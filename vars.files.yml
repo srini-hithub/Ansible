@@ -3,8 +3,11 @@
   remote_user: ansiuser
   become: true
   vars_files:
-  - file.yml
+  - /home/ansiuser/Ansible/file.yml
   tasks: 
   - name: To create files.
-    file: path=/var/tmpi/{{ item }}  state=touch
-    with_items: "{{ file.yml }}" 
+    file: path=/var/tmp/{{ item }}  state=touch
+    with_items: "{{ var1 }}" 
+  - name: To Create users from the vars referencing files.
+    user: name={{ item }}
+    with_items: "{{ var2 }}"

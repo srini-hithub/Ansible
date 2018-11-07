@@ -6,6 +6,7 @@
   - name: To restart httpd.
     yum: name=httpd state=latest
   - file: path=/var/www/html/index.html state=file
+  - copy: content="This is my web server" dest=/var/www/html/index.html
     notify: restart the service
   handlers: 
   - name: restart the service
