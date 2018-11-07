@@ -11,3 +11,4 @@
   handlers: 
   - name: restart the service
     service: name=httpd state=restarted 
+...
