@@ -1,0 +1,8 @@
+###Ansible Ad-hoc Commands.
+ansible <host Pattern> -m <module> -a "argument to pass"
+ansible all -m ping ==> gives the ping status of the servers as per the inventory.
+ansible all -m -a "id" ==> gives the id command results on the end servers.
+asnible all -m -a "date" ==> gives date command output of the remote servers.
+ansible all -m command -a "useradd users1" ==> creates the users on the remote server"
+ansible all -m shell -a "date;ls" ==> shell module on the remote hosts.
+ansible all -m copy -a "content="Today is holiday\n" dest=/etc/motd append=yes"

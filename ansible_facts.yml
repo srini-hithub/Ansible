@@ -1,0 +1,11 @@
+---
+###Ansible hosts defenition.
+####
+ansible all -m setup ===> gives the list of the factors.
+##We can filter using the filter command in the ad-hoc commands.
+ansible all -m setup -a "filter=ansible_hostname"
+ansible all -m setup -a "filter=ansible_fqdn
+ansible all -m setup -a "fitler=ansible_eth0"
+ansible all -m setup -a "fitler=ansible_local"
+ansible all -m setup -a "filter=ansible_dns"
+

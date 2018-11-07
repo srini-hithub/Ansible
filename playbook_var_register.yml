@@ -1,0 +1,14 @@
+## In this play book we define the variables using the "register"
+##and later could be used for the debugging purposes.
+##When this play is run the command results register in value and dumped into var 
+##through the debug.
+---
+- hosts: 172.31.22.217 
+  remote_user: ansiuser
+  #sudo: yes
+  become: true
+  tasks:
+  - name: To install the mariadb and httpd
+    user: name=user1 state=present
+    register: value
+  - debug: var=value
