@@ -1,0 +1,20 @@
+---
+users:
+ - user21
+ - user22
+ - user23 
+ - user24
+files:
+ - /var/tmp/file1
+ - /var/tmp/file2
+ - /var/tmp/file3
+packages:
+ - vsftpd
+ - screen
+ - openssh
+ - sudo 
+ - httpd
+groups:
+ - group1
+ - group2
+ - group3

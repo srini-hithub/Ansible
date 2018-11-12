@@ -1,0 +1,14 @@
+---
+- name: To declare variables
+  hosts: all
+  remote_user: ansiuser
+  become: true
+  vars_files:
+    - vars.yml
+  tasks: 
+  - name: To create users on the clients.
+    user: name={{ item }} state=present 
+    with_items: "{{ users }}"
+  - name: To create file from the variable file.
+    file: name={{ item }} state=touch
+    with_items: "{{ files }}"

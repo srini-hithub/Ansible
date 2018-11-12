@@ -3,8 +3,6 @@
   hosts: all
   remote_user: ansiuser
   become: true
-  vars:
-   user: playuser
   tasks: 
   - name: To create users on the clients.
     user: name={{ user }} state=present 

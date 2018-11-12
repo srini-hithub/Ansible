@@ -1,0 +1,16 @@
+---
+- hosts: all 
+  remote_user: ansiuser
+  become: true
+  tasks:
+  - name: To install the mariadb and httpd
+    user: name={{ item }} state=present
+    with_items: "{{ user }}"
+    #register: result
+  #- debug: var=result
+  - name: To create a file.
+    file: path={{ item }} state=file
+    with_items: "{{ file }}"
+    #register: result
+  #- name: To debug the task
+  #  debug: var=result

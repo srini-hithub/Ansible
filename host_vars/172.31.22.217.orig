@@ -1,0 +1,9 @@
+---
+user: 
+  - hostuser12
+  - hostuser13
+  - hostuser14
+file: 
+  - /var/tmp/test_file
+  - /var/tmp/test_file2
+...

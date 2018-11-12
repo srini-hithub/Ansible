@@ -1,5 +1,5 @@
 ---
-users: 
-  - webuser1
-  - webuser2
+user: 
+  - webuser12
+  - webuser22
 ...
