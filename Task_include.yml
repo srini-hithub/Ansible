@@ -1,0 +1,10 @@
+---
+- name: To install the web package.
+  yum: name={{ packages.web }} state=latest
+- name: To configure file 
+  file: path={{ files.webfile }} state=touch
+- name: To set the home page.
+  copy: content="This is my web server\n" dest={{ files.webfile }}
+- name: To create users.
+  user: name={{ item }} create_home=yes shell=/bin/bash
+  with_items: "{{ users.webusers }}"

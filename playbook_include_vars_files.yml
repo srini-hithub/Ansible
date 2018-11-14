@@ -1,0 +1,15 @@
+---
+packages:
+ dbpkg: mariadb
+ web: httpd
+ FTP: vsftpd 
+users: 
+ DBusers:
+  - dbuser1
+  - dbuser2
+  - dbuser3
+ webusers:
+  - webuser1
+  - webuser2
+files:
+ webfile: /var/www/html/index.html

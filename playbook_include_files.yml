@@ -1,0 +1,11 @@
+---
+- name: To declare variables
+  hosts: WEB 
+  remote_user: ansiuser
+  become: true
+  tasks:
+  - name: To include the variables.
+    include_vars: playbook_include_vars_files.yml
+  - name: To include the tasks.
+    include: Task_include.yml
+...

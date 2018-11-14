@@ -1,0 +1,16 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  vars_files: 
+    -  playbook_include_vars_files.yml 
+
+  tasks:
+  - name: To install the packages.
+    yum: name={{ packages.web }} state=latest
+    #when: inventory_hostname in groups['WEB'] 
+    when: ( ansible_hostname  in ['ip-172-31-24-36'] )  
+  - name: To create users in the DB
+    user: name={{ item }} state=present 
+    with_items: "{{ users.DBusers }}"
+    when: inventory_hostname in groups['DB']
