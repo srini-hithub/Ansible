@@ -1,0 +1,18 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  #gather_facts: no
+  tasks: 
+  - name: To install the package.
+    yum: name=httpd_new state=latest
+    ignore_errors: yes
+    register: pkg
+  
+  - name: To display the exist status.
+    debug: var=pkg
+
+  - name: To ensure the old package is there.
+    yum: name=httpd state=latest
+    #when: pkg is failed 
+    when: false 

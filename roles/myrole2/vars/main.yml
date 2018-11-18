@@ -1,0 +1,10 @@
+---
+# vars file for myrole2
+users: 
+  user=roleuser
+pkg:
+  web=httpd
+files:
+  file=/var/www/html/index.html
+content:
+  cont="this is the roles web server"

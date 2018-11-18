@@ -1,0 +1,9 @@
+---
+users:
+ - host2user1
+ - host2user2
+ - host2user3
+files:
+ - host2file
+ - host2file2
+ - host2file3

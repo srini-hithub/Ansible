@@ -1,0 +1,6 @@
+---
+# tasks file for myrole2
+- name: To install web package.
+  yum: name="{{ pkg.web }}" state=latest
+- copy: content= "{{ content.cont }}" dest=/var/www/html/index.html  
+- service: name=httpd state=restarted

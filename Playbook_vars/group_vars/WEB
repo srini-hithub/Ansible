@@ -1,5 +1,8 @@
 ---
-user: 
-  - webuser12
-  - webuser22
+users: 
+  - weggroupuser1 
+  - webgroupuser2
+files:
+  - webgroupfile1
+  - webgroupfile2 
 ...

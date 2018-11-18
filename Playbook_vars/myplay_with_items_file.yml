@@ -1,0 +1,14 @@
+---
+- name: To perform the iteration.
+  hosts: all
+  remote_user: ansiuser
+  become: true
+  #vars_files:
+  #  - vars_file.yml 
+  tasks:
+  - name: To Create4 users.
+    user: name={{ item }} state=present
+    with_items: "{{ users }}"
+  - name: To create files.
+    file: path=/var/tmp/{{item}} state=touch
+    with_items: "{{ files }}"

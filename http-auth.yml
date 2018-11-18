@@ -1,0 +1,15 @@
+---
+- hosts: all 
+  become: yes
+  remote_user: ansiuser 
+  tasks:
+  - name: Install the httpd secure way.
+    yum: name=httpd state=latest
+  #- file: path=/var/www/html/protected state=directory force=yes
+  - file: path=/var/www/html/private state=directory force=yes
+  - copy: src="htaccess-custom" dest=/var/www/html/private/.htaccess
+  - copy: src=htpasswd dest=/var/www/html/private/.htpasswd owner=apache group=apache mode=0640
+  - replace: dest=/etc/httpd/conf/httpd.conf regexp="AllowOverride None" replace="AllowOverride AuthConfig"
+  - lineinfile: dest=/var/www/html/private/index.html line="This server {{ansible_hostname}} is protected" state=present create=yes
+  #- firewalld: service=http permanent=yes state=enabled immediate=true
+  - service: name=httpd state=restarted

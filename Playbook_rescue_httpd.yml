@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  tasks:
+  - block:
+    - name: To install or upgrade the ftp pakcage.
+      yum: name=httpdx state=latest
+      register: values.
+
+    rescue: 
+    - name: To ensure default home page is there. 
+      copy: content="This is my default home page" dest=/var/www/html/index.html
+
+    always:
+    - name: To restart the service.
+      service: name=httpd state=restarted

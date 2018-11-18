@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  tasks:
+  - block:
+    - name: To install or upgrade the ftp pakcage.
+      yum: name=vsftpd state=latest
+      register: values.
+
+    rescue: 
+    - name: To restart the service.
+      service: name=vsftpd state=restarted
+     
+    always:
+    - name: To restart the service.
+      service: name=vsftpd state=restarted

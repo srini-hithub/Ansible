@@ -1,4 +1,7 @@
 ---
-user:
- - dbuser12
- - dbuser22
+users:
+ - DBuser1 
+ - DBuser2 
+files:
+ - DBfile1
+ - DBfile2

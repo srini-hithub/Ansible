@@ -1,0 +1,19 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  vars:
+   sudousers:
+    - sudouser2
+    - sudouser3
+  tasks:
+  - name: To create a sudo group.
+    group: name=sudogroup state=present
+  - name: To create sudo users.
+    user: name={{ item }} state=present groups=sudogroup 
+    with_items: "{{ sudousers }}"
+  - name: To congfigure the sudo file
+    lineinfile: 
+      path: /etc/sudoers 
+      line: "%sudogroup ALL=(ALL) NOPASSWD: ALL"
+      backup: yes

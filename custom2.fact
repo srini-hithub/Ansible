@@ -1,5 +1,3 @@
 #!/bin/bash
 DATE=`date`
-echo {\"date\" : \"${DATE}\"
-USERS=$(who)
-echo \"users_loggedin\" : \"${USERS}\"}
+echo "{\"date\" : \"${DATE}\"}"

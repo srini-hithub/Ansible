@@ -1,11 +1,11 @@
-[ packages ]
- web = httpd
- ftp = vsftp
- scr = screen
-[ users ]
-customuser1
-customuser2
-customuser3
+[packages]
+web: httpd
+ftp: vsftp
+scr: screen
+[users]
+user1=customuser1
+user2=customuser2
+user2=customuser3
 [ files ]
-file1 = /var/www/html/index.html
-file2 = /var/ftp/pub/ftp.custom
+file1="/var/www/html/index.html"
+file2="/var/ftp/pub/ftp.custom"

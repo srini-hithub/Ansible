@@ -1,0 +1,8 @@
+---
+users:
+   - fileuser1
+   - ifileuser2
+files:
+   - ffile1
+   - ffile2
+   - iffile

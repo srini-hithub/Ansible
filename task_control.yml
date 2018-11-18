@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: true
+  remote_user: ansiuser 
+  tasks:
+  - block:
+    - yum: name=xyz1 state=latest
+      register: install
+    - debug: msg="Installation failed"
+      when: install|failed
+    rescue: 
+    - debug: msg="Installation failed"
+      when: install|failed
+    always:
+    - service: name=xyz state=started
+      register: srv
+      ignore_errors: yes
+    - debug: msg="Service failed"
+      when: srv|failed
+    - debug: msg="Installation and service failed"
+      when: srv|failed and install|failed

@@ -1,0 +1,7 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  tasks:
+  - copy: src=custom2.fact dest=/etc/ansible/facts.d
+

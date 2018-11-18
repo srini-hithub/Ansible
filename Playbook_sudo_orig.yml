@@ -1,0 +1,19 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  vars:
+   sudousers:
+    - sudouser2
+    - sudouser3
+  tasks:
+  - name: To create sudo users.
+    user: name={{ item }} state=present 
+    with_items: "{{ sudousers }}"
+  - name: To congfigure the sudo file
+    lineinfile: 
+      path: /etc/sudoers 
+      #line: "sudouser1 ALL=(ALL) NOPASSWD: ALL" 
+      line: "{{ item }}" 'ALL=(ALL) NOPASSWD ALL'
+      with_items: "{{ sudousers }}"
+      backup: yes

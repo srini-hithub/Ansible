@@ -1,0 +1,10 @@
+---
+- hosts: all 
+  become: yes
+  remote_user: ansiuser 
+  tasks:
+  - name: Install the httpd secure way.
+    yum: name=httpd state=latest
+  - name: To copy the template content.
+    template: src=index.html.j2 dest=/var/www/html/index.html
+  - service: name=httpd state=restarted
