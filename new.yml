@@ -1,0 +1,14 @@
+---
+- hosts: all 
+  remote_user: ansiuser
+  become: true
+  tasks:
+  - name: Ansible lineinfile multiple lines with_items example
+    lineinfile:
+      dest: "{{ item.dest }}"
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      backrefs: yes
+    with_items:
+      - {dest: '/etc/ansible/ansible.cfg', regexp: 'config file for ansible', line: 'line changed'}
+      - {dest: '/home/dinoopblogger/remote_server.txt', regexp: 'hello', line: 'world'}

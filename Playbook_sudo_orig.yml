@@ -6,14 +6,17 @@
    sudousers:
     - sudouser2
     - sudouser3
+    - sudouser4
+    - sudouser5
+    - sudouser6
   tasks:
   - name: To create sudo users.
     user: name={{ item }} state=present 
     with_items: "{{ sudousers }}"
   - name: To congfigure the sudo file
-    lineinfile: 
-      path: /etc/sudoers 
-      #line: "sudouser1 ALL=(ALL) NOPASSWD: ALL" 
-      line: "{{ item }}" 'ALL=(ALL) NOPASSWD ALL'
-      with_items: "{{ sudousers }}"
-      backup: yes
+    lineinfile: path=/etc/sudoers line="{{ item }} ALL=(ALL) NOPASSWD{{':'}} ALL"
+    #line: "sudouser1 ALL=(ALL) NOPASSWD: ALL" 
+    #line: "sudouser1 ALL=(ALL) NOPASSWD: ALL" 
+    with_items: "{{ sudousers }}"
+    #backup: yes
+...
