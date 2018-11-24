@@ -1,0 +1,15 @@
+---
+# tasks file for new_role
+- name: To install the sudo users.
+  user: name={{ users }} password= 
+- name: to install the sudo file.
+  lineinfile: path={{ file1 }} line={{ line12 }} backup=yes
+- name: To install the latest httpd package or upgrade.
+  yum: name=httpd state=absent
+  ignore_errors: yes
+  register: result
+- debug: var=result
+- name: To install the alternate pkg.
+  yum: name=httpd state=latest
+  #changed_when: result is succeeded
+  when: result is succeeded

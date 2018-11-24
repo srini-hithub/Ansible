@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  #vars:
+  # password: ansible 
+  vars_files:
+    - crypt2.yml
+  tasks:
+  - name: to unzip the file.
+    copy: src=ansible.zip dest=/var
+  - name: to install the zip s/w.
+    yum: name=zip state=latest
+  - yum: name=unzip state=latest
+  - name: to unzip.
+    command: unzip -o -P {{ password }} /var/ansible.zip -d /tmp
+   

@@ -1,0 +1,5 @@
+---
+# tasks file for role1
+- name: To install the pkg.
+  user: name={{ users }} state=present
+- group: name={{ groups }}

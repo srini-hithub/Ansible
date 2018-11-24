@@ -1,0 +1,5 @@
+---
+# vars file for new_role
+users: myuser1
+file1: /etc/sudoers
+line12: "myuser2 ALL=(ALL) NOPASSWD{{':'}} ALL"

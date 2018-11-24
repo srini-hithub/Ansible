@@ -1,0 +1,4 @@
+---
+- name: To install the packages.
+  yum: name={{ item }} state=latest
+  with_items: "{{ packages }}"

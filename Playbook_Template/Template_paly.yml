@@ -1,0 +1,7 @@
+---
+- hosts: all
+  remote_user: ansiuser
+  become: true
+  tasks:
+  - name: To capture the managed server details.
+    template: src=manage_hosts.j2 dest=/var/tmp/manage_hosts

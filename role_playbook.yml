@@ -3,5 +3,4 @@
   remote_user: ansiuser
   become: true
   roles:
-    - roles/myrole2
-
+    - roles/new_role

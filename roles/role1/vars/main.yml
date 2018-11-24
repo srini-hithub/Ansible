@@ -1,0 +1,4 @@
+---
+# vars file for role1
+users: user_role
+groups: group_role
