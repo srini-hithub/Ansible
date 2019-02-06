@@ -1,0 +1,20 @@
+---
+- name: tasks to configure the sudo users.
+  hosts: all
+  remote_user: root
+  become: true
+  vars_files: 
+  - file_vars.yml 
+  tasks:
+  - name: to create users to grant the sudo privileges.
+    user: name={{ item }} state=present 
+    with_items: "{{ users }}"
+    when: inventory_hostname == "172.31.18.189"
+ 
+
+  - name: To enable the sudo privileges.
+    lineinfile: path=/etc/sudoers line="{{ item }}	ALL=(ALL)	NOPASSWD{{":"}} ALL"
+    with_items: "{{ users }}" 
+    when: inventory_hostname == "172.31.18.189"
+
+

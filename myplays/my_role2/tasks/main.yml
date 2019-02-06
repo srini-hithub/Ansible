@@ -1,0 +1,17 @@
+---
+# tasks file for my_role2
+- name: To create files.
+  file: name={{ item }} state=touch
+  with_items: "{{ files }}"
+
+- name: To create users.
+  user: name={{ item }} state=present
+  with_items: "{{ users }}"
+
+- name: To install the service.
+  yum: name={{ item }} state=latest
+  with_items: "{{ pkgs }}"
+
+- name: To restart the service.
+  service: name={{ item }} state=restarted enabled=true
+  with_items: "{{ servs }}"

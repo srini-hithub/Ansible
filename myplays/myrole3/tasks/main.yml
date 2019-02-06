@@ -1,0 +1,15 @@
+---
+# tasks file for myrole3
+- name: to install the web server.
+  yum: name=httpd state=latest
+
+- name: To setup the home page of the webserver.
+  #template: 
+  copy:
+   src: files/index.html
+   dest: /var/www/html/index.html
+   mode: 0644
+  notify: restart httpd
+
+#- name: To restart the service.
+#  service: name=httpd state=restarted enabled=true

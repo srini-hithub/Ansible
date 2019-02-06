@@ -1,0 +1,7 @@
+---
+# handlers file for myrole3
+#handlers:
+- name: restart httpd
+  service: name=httpd state=restarted enabled=true
+- name: ftpservice
+  service: name=vsftpd state=reload enabled=true

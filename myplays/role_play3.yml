@@ -1,0 +1,8 @@
+---
+- name: To use the roles.
+  hosts: all
+  remote_user: root
+  become: true
+  
+  roles:
+   - myrole3 

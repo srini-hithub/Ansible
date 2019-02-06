@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: root
+  become: true
+  tasks:
+  - name: To install the package.
+    yum: name=vsftpd state=latest
+    register: status 
+
+  - name: To check with the debug module. 
+    debug: 
+      msg: "This is installed successfully."
+    #debug: var=status
+    when: status.changed == true 

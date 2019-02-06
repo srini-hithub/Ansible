@@ -1,0 +1,16 @@
+---
+# tasks file for my_role
+- name: To test the role functionality
+  file: path=/root/role_file state=touch
+
+- name: To install the package.
+  yum: name={{ pkg }} state=latest
+ 
+#- name: To copy the static content.
+#  copy: src=files/index.html dest=/var/www/html/index.html
+
+- name: To copy the dynamic content using the template.
+  template: src=templates/index.j2 dest=/var/www/html/index.html
+  notify: restart service
+#- name: To restart the service.
+#  service: name={{ serv }} enabled=yes

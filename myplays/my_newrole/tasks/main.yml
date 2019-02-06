@@ -1,0 +1,7 @@
+---
+# tasks file for my_newrole
+- name: To install the the ftp server.
+  yum: name=vsftpd state=latest
+
+- name: To restart the ftpd service.
+  service: name=vsftpd state=restarted enabled=true

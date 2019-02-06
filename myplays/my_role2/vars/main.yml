@@ -1,0 +1,20 @@
+---
+# vars file for my_role2
+files:
+- file_ans1
+- file_ans2
+- file_ans3
+- file_ans4
+users: 
+- user_ans1
+- user_ans2
+- user_ans3
+- user_ans4
+pkgs:
+- mariadb
+- httpd
+- vsftpd
+servs:
+- mariadb
+- httpd
+- vsftpd

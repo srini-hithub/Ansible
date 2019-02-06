@@ -1,0 +1,17 @@
+---
+- hosts: all
+  remote_user: root
+  become: true
+  vars_files:
+  - crypt.yml
+  tasks:
+  - name: To install the zip package.
+    yum: name=zip state=latest
+  - name: To install the unzip pkg.
+    yum: name=unzip state=latest
+ 
+  - name: To copy the zip file.
+    copy: src=myfile.zip dest=/tmp
+
+  - name: To unxzip the file.
+    command: unzip -o -P {{ passwd }} /tmp/myfile.zip -d /tmp

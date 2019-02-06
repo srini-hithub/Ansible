@@ -1,0 +1,7 @@
+---
+- name: tasks with role.
+  hosts: all
+  remote_user: root
+  become: true
+  roles:
+  - my_role
